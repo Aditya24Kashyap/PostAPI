@@ -4,6 +4,9 @@ import React from 'react'
 import SearchBar from './search-bar'
 import UserButton from '@/modules/authentication/components/user-button'
 
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
+
 import InviteMember from './invite-member'
 import WorkSpace from './workspace'
 import { UserProps, WorkspaceProps } from '../types'
@@ -32,7 +35,14 @@ const Header = ({ user, workspace }: Props) => {
         <InviteMember />
         {/* @ts-ignore */}
         <WorkSpace workspace={workspace} />
-        <UserButton user={user} size='sm' />
+        {/* <UserButton user={user} size='sm' /> */}
+        {user ? (
+          <UserButton user={user} size='sm' />
+        ) : (
+          <Link href="/sign-in">
+            <Button variant="outline" size="sm">Sign In</Button>
+          </Link>
+        )}
       </div>
     </header>
   )
