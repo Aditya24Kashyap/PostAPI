@@ -11,6 +11,7 @@ import InviteMember from './invite-member'
 import WorkSpace from './workspace'
 import { UserProps, WorkspaceProps } from '../types'
 
+import { ModeToggle } from '@/components/mode-toggle'
 
 interface Props {
   user: UserProps
@@ -32,10 +33,10 @@ const Header = ({ user, workspace }: Props) => {
       </div>
 
       <div className='col-span-2 flex items-center justify-end space-x-2 hover:cursor-pointer hover:opacity-80'>
+        <ModeToggle />
         <InviteMember />
         {/* @ts-ignore */}
         <WorkSpace workspace={workspace} />
-        {/* <UserButton user={user} size='sm' /> */}
         {user ? (
           <UserButton user={user} size='sm' />
         ) : (

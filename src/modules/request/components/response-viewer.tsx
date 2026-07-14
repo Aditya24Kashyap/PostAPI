@@ -39,9 +39,15 @@ interface Result {
   size?: number;
 }
 
+// export interface ResponseData {
+//   success: boolean;
+//   requestRun: RequestRun;
+//   result?: Result;
+// }
+
 export interface ResponseData {
   success: boolean;
-  requestRun: RequestRun;
+  requestRun?: RequestRun;
   result?: Result;
 }
 
@@ -51,6 +57,14 @@ interface Props {
 
 const ResponseViewer = ({ responseData }: Props) => {
   const [activeTab, setActiveTab] = useState("json");
+
+  if (!responseData?.requestRun) {
+    return (
+      <div className="w-full text-center text-sm text-muted-foreground py-6">
+        No response yet — try saving your request (Ctrl+S) before sending.
+      </div>
+    );
+  }
 
   const getStatusColor = (status?: number): string => {
     const s = typeof status === "number" ? status : 0;
