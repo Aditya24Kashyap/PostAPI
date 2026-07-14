@@ -58,7 +58,8 @@ const WorkSpace = () => {
             </span>
           </SelectTrigger>
           <SelectContent>
-            {workspaces.map((ws) => (
+            {/* {workspaces.map((ws) => ( */}
+            {workspaces.map((ws: { id: string; name: string }) => (
               <SelectItem key={ws.id} value={ws.id}>
                 {ws.name}
               </SelectItem>
