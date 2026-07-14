@@ -46,7 +46,8 @@ const WorkSpace = () => {
         <Select
           value={selectedWorkspace?.id}
           onValueChange={(id) => {
-            const ws = workspaces.find((w) => w.id === id);
+            // const ws = workspaces.find((w) => w.id === id);
+            const ws = workspaces.find((w: { id: string }) => w.id === id);
             if (ws) setSelectedWorkspace(ws);
           }}
         >
